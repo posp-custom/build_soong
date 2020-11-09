@@ -31,8 +31,6 @@ import (
 	"github.com/google/blueprint/proptools"
 
 	"android/soong/android/soongconfig"
-
-	"potato/soong/android"
 )
 
 var Bool = proptools.Bool
@@ -609,14 +607,6 @@ func (c *config) ProductResourceOverlays() []string {
 	return c.productVariables.ProductResourceOverlays
 }
 
-func (c *config) JavaSourceOverlays() string {
-	return String(c.productVariables.Potato.Java_Source_Overlays)
-}
-
-func (c *config) JavaSourceOverlayModuleWhitelist() []string {
-	return android.PotatoConfig.JavaSourceOverlayModuleWhitelist
-}
-
 func (c *config) PlatformVersionName() string {
 	return String(c.productVariables.Platform_version_name)
 }
@@ -1074,10 +1064,6 @@ func (c *deviceConfig) JavaCoverageEnabledForPath(path string) bool {
 		}
 	}
 	return coverage
-}
-
-func (c *deviceConfig) SpecificCameraParametersLibrary() string {
-	return String(c.config.productVariables.Potato.Specific_camera_parameter_library)
 }
 
 // Returns true if gcov or clang coverage is enabled.
